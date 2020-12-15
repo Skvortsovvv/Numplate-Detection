@@ -3,4 +3,4 @@ python:
  - "3.8"
 script:
  - python -m unittest tests.test_parser
- - python Source.ParseNumplate
+ - python Source/ParseNumplate.py
