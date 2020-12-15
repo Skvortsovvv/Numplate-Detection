@@ -3,6 +3,4 @@ python:
  - "3.8"
 script:
  - python -m unittest tests.test_parser
- - cd Source
- - puthon3 Parse
- - python3 Prediction
+ - python Source.ParseNumplate
