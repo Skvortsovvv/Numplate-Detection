@@ -10,7 +10,6 @@ init:
   - "ECHO %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%"
 
 install:
-  - appveyor DownloadFile https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.0.0-alpha.20201127.exe
   - "c:/python38-x64/python.exe -m pip install --upgrade pip"
   - "%PYTHON%/Scripts/pip.exe install numpy"
   
