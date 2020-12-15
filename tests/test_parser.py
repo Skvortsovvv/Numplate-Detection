@@ -19,3 +19,6 @@ class TestParser(unittest.TestCase):
         self.assertEqual(NumPlateParser("H001hoZ8"), "Sorry, but character " + '"' + "Z" + '"' + " cant be here")
         self.assertEqual(NumPlateParser("e777Kх666"), "Sorry, but there is no such region")
         self.assertEqual(NumPlateParser("o000oo01"), "Sorry, but numbers cant be 000")
+
+if __name__ == "__main__":
+    unittest.main()
