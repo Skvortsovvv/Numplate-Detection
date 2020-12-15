@@ -16,9 +16,10 @@ def NumPlateParser(Numplate):
     temp = ""
     for i in range(0, len(Numplate)):
         temp += Numplate[i].upper()
-    index = 0
+    index = 99
     if len(temp) >= 8:
         if len(temp) <= 9:
+            index = 0
             if temp[index] in CHARS: # A
                 index += 1
                 if temp[index].isdigit(): # 1
@@ -51,7 +52,7 @@ def NumPlateParser(Numplate):
                                                     index = -1
                                             else:
                                                 index = -2
-    if index == 0:
+    if index == 99:
         return ""
     elif index == -1:
         return "Sorry, but there is no such region"
