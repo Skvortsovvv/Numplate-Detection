@@ -2,7 +2,7 @@ import cv2
 import tensorflow as tf
 from PIL import Image
 
-model = tf.keras.models.load_model("model_.h5")
+model = tf.keras.models.load_model("Source/model_.h5")
 
 def prepare(filepath):
     width = 100
