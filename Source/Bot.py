@@ -91,9 +91,9 @@ def photo(message):
                             else:
                                 bot.send_message(chatID, "Text on numplate: " + read_num)
 
-while True:
-    try:
-        print('...')
-        bot.polling()
-    except:
-        time.sleep(10)
+#while True:  # Uncomment later
+#    try:
+#        print('...')
+#        bot.polling()
+#    except:
+#        time.sleep(10)
