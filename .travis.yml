@@ -4,5 +4,5 @@ python:
 script:
  - python -m unittest tests.test_parser
  - cd Source
- - puthon Parse
- - python Prediction
+ - puthon.exe Parse
+ - python.exe Prediction
