@@ -5,6 +5,7 @@ import pytesseract
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\projects\Numplate-Detection\Tesseract\tesseract.exe'
 
+"""""""
 class TestTesseract(unittest.TestCase):
 
     def test_reading(self):
