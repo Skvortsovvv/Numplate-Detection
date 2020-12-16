@@ -1,5 +1,5 @@
 import unittest
-from Source import Tess 
+from Source.Tess import Reading 
 import pytesseract
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\projects\Numplate-Detection\Tesseract\tesseract.exe'
