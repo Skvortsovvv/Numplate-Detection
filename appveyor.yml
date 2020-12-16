@@ -13,6 +13,7 @@ init:
 install:
   - "%PYTHON%/Scripts/pip.exe install requests"
   - "%PYTHON%/Scripts/pip.exe install pytest-warnings"
+  - "%PYTHON%/Scripts/pip.exe install pytesseract"
   - "%PYTHON%/Scripts/pip.exe install os-win"
   - "%PYTHON%/Scripts/pip.exe install zipfile38"
   - "%PYTHON%/Scripts/pip.exe install googledrivedownloader"
