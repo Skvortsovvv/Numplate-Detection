@@ -28,5 +28,6 @@ build_script:
   - cd ..
   - cd
   - ls
-  - "%PYTHON%/python.exe Source/test/test_tes.py"
-  - "%PYTHON%/python.exe tests/test_parser.py"
+  - "%PYTHON%/python.exe setup.py build" 
+  #- "%PYTHON%/python.exe Source/test/test_tes.py"
+  #- "%PYTHON%/python.exe tests/test_parser.py"
