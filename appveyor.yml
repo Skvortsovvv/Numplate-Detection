@@ -30,6 +30,6 @@ build_script:
   - cd ..
   - cd
   - ls 
-  - "%PYTHON%/python.exe -m unottest tests/test_parser.py"
+  - "%PYTHON%/python.exe -m unittest tests/test_parser.py"
   - "%PYTHON%/python.exe -m unittest Source/test/test_tes.py"
 
