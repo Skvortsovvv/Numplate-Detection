@@ -1,4 +1,3 @@
-""""
 import unittest
 from Source.Tess import Reading 
 import pytesseract
@@ -15,5 +14,3 @@ class TestTesseract(unittest.TestCase):
         self.assertEqual(Tess.Reading(4), "C308AY799")
         self.assertEqual(Tess.Reading(5), "0474YR152")
         self.assertEqual(Tess.Reading(6), "P128YY172")
-        
-"""
