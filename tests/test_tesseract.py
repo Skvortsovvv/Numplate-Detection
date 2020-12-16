@@ -5,7 +5,7 @@ import pytesseract
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\projects\Numplate-Detection\Tesseract\tesseract.exe'
 
-"""""""
+
 class TestTesseract(unittest.TestCase):
 
     def test_reading(self):
@@ -15,3 +15,5 @@ class TestTesseract(unittest.TestCase):
         self.assertEqual(Tess.Reading(4), "C308AY799")
         self.assertEqual(Tess.Reading(5), "0474YR152")
         self.assertEqual(Tess.Reading(6), "P128YY172")
+        
+"""
