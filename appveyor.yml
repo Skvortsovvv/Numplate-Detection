@@ -27,5 +27,6 @@ build_script:
   - ls
   - cd ..
   - cd
+  - ls
   - "%PYTHON%/python.exe tests/test_tesseract.py"
   - "%PYTHON%/python.exe tests/test_parser.py"
