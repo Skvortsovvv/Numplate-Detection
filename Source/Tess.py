@@ -8,7 +8,7 @@ def IsNumbersHere(num):
     counter = 0
     for ch in num:
         if ch.isdigit():
-            counter+=1
+            counter += 1
     if counter > 3:
         return 1
     else:
@@ -16,11 +16,16 @@ def IsNumbersHere(num):
 
 def Pars(num):
     temp = ""
+    ind = 1
     if len(num) >= 9:
-        for index in range(len(num) - 9, len(num)):
+        while (num[len(num)-ind].isalpha()) & ((len(num) - ind) >= 9):
+            ind += 1
+        for index in range(len(num) - ind - 8, len(num) - ind +1):
             temp += num[index]
     else:
+        print(num)
         return num
+    print('3 ', temp)
     return temp
 
 def FinalParsin(numplate):
@@ -30,6 +35,7 @@ def FinalParsin(numplate):
             temp += ch.upper()
         elif ch.isdigit():
             temp += ch.upper()
+    print('2', temp)
     return Pars(temp)
 
 def parser(strings):
@@ -44,12 +50,12 @@ def parser(strings):
                 counter_d += 1
             elif ch.isalpha():
                 counter_ch += 1
-        if (counter_d >= 3) &(counter_ch >= 2):
+        if (counter_d >= 3) & (counter_d <= 8) & (counter_ch >= 2) & (counter_ch <= 6):
             if (counter_d >= max_d) & (counter_ch >= max_ch):
                 max_d = counter_d
                 max_ch = counter_ch
                 m_word = el
-
+    print("1 ", m_word)
     return FinalParsin(m_word)
 
 def Reading(ind):
