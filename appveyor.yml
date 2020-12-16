@@ -26,5 +26,6 @@ build_script:
   - cd Tesseract
   - ls
   - cd ..
+  - cd
   - "%PYTHON%/python.exe tests/test_tesseract.py"
   - "%PYTHON%/python.exe tests/test_parser.py"
