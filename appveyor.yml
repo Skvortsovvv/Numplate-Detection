@@ -6,8 +6,24 @@ environment:
       PYTHON_VERSION: "3.8.0"
       PYTHON_ARCH: "64"
 
+
 init:
   - "ECHO %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%"
 
 install:
-  - "c:/python38-x64/python.exe -m pip install --upgrade pip"  
+  - "%PYTHON%/Scripts/pip.exe install requests"
+  - "%PYTHON%/Scripts/pip.exe install pytest-warnings"
+  - "%PYTHON%/Scripts/pip.exe install os-win"
+  - "%PYTHON%/Scripts/pip.exe install zipfile38"
+  - "%PYTHON%/Scripts/pip.exe install googledrivedownloader"
+  - "%PYTHON%/python.exe -m pip install --upgrade pip"
+  - "%PYTHON%/Scripts/pip.exe install numpy"  
+
+build_script:
+  - "%PYTHON%/python.exe extract_tesseract.py"
+  - cd
+  - cd Tesseract
+  - ls
+  - cd ..
+  - "%PYTHON%/python.exe hello.py"
+  - "%PYTHON%/python.exe tests/test_parser.py"
