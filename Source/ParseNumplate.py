@@ -48,7 +48,6 @@ def NumPlateParser(Numplate):
                                                 if int(Region) in REGS:
                                                     return temp
                                                 else:
-                                                    print(Region)
                                                     index = -1
                                             else:
                                                 index = -2
