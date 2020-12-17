@@ -23,7 +23,7 @@ def ItPredictedNumplate(chatID):
 
 
 def DoingYOLOThings(chatID):
-    result = Yolo.detection()
+    result = Yolo.detection("image")
     if result == -1:
         bot.send_message(chatID, "Sorry, but image size is low")
     elif result == -2:
