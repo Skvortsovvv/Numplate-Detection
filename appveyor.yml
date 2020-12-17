@@ -21,7 +21,7 @@ install:
   - "%PYTHON%/Scripts/pip.exe install numpy"
   - "%PYTHON%/Scripts/pip.exe install opencv-python"
   - "%PYTHON%/Scripts/pip.exe install imutils"
-  - "%PYTHON%/Script/pip.exe insatall tensorflow"
+  - "%PYTHON%/Scripts/pip.exe insatall tensorflow"
 
 build_script:
   - "%PYTHON%/python.exe extract_tesseract.py"
