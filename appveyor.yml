@@ -11,13 +11,13 @@ init:
   - "ECHO %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%"
 
 install:
+  - "%PYTHON%/python.exe -m pip install --upgrade pip"
   - "%PYTHON%/Scripts/pip.exe install requests"
   - "%PYTHON%/Scripts/pip.exe install pytest-warnings"
   - "%PYTHON%/Scripts/pip.exe install pytesseract"
   - "%PYTHON%/Scripts/pip.exe install os-win"
   - "%PYTHON%/Scripts/pip.exe install zipfile38"
   - "%PYTHON%/Scripts/pip.exe install googledrivedownloader"
-  - "%PYTHON%/python.exe -m pip install --upgrade pip"
   - "%PYTHON%/Scripts/pip.exe install numpy"
   - "%PYTHON%/Scripts/pip.exe install opencv-python"
   - "%PYTHON%/Scripts/pip.exe install imutils"
