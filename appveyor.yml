@@ -32,4 +32,4 @@ build_script:
   - ls 
   - "%PYTHON%/python.exe -m unittest tests/test_parser.py"
   - "%PYTHON%/python.exe -m unittest tests/test_tesseract.py"
-
+  - "%PYTHON%/python.exe -m unittest tests/test_smallCNN.py"
