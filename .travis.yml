@@ -9,10 +9,11 @@ script:
  - pip install imutils
  - pip install pytesseract
  - pip install numpy
- - python -m unittest tests.test_parser
- - python Source/ParseNumplate.py
- - python Source/Tess.py
- - python Source/Prediction.py
- - python Source/Yolo.py
- - python Source/config.py
- - python Source/Bot.py
+ #- python Source/build_file.py
+ #- python -m unittest tests.test_parser
+ #- python Source/ParseNumplate.py
+ #- python Source/Tess.py
+ #- python Source/Prediction.py
+ #- python Source/Yolo.py
+ #- python Source/config.py
+ #- python Source/Bot.py
