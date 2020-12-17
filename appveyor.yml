@@ -25,12 +25,7 @@ install:
 
 build_script:
   - "%PYTHON%/python.exe extract_tesseract.py"
-  - cd
-  - cd Tesseract
-  - ls
-  - cd ..
-  - cd
-  - ls 
+  - "%PYTHON%/python.exe Source/build_file.py"
   - "%PYTHON%/python.exe -m unittest tests/test_parser.py"
   - "%PYTHON%/python.exe -m unittest tests/test_tesseract.py"
   - "%PYTHON%/python.exe -m unittest tests/test_smallCNN.py"
