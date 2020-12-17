@@ -9,6 +9,63 @@ bot_token = config.token
 
 bot = telebot.TeleBot(token=bot_token)
 
+
+def ItPredictedNumplate(chatID):
+    read_number = Tess.Reading("image")
+    read_number = ParseNumplate.TessNumplateParser(read_number)
+    flag = Tess.IsNumbersHere(read_number)  # Check how good Tesseract read a numplate
+    print("Flag ", flag)
+    if len(read_number) == 0:
+        bot.send_message(chatID, "Sorry, I could not read this number :`(")
+    elif flag:
+        bot.send_message(chatID, "Text on numplate: " + read_number)
+    return flag
+
+
+def DoingYOLOThings(chatID):
+    result = Yolo.detection()
+    if result == -1:
+        bot.send_message(chatID, "Sorry, but image size is low")
+    elif result == -2:
+        bot.send_message(chatID, "Sorry, but here is no number plate")
+    else:
+        if result >= 2:
+            indexes = Prediction.checkcropedimages(result)
+            print("Numplates count: ", len(indexes))
+            if len(indexes) == 1:
+                bot.send_message(chatID, "Here is a number plate!")
+            elif len(indexes) > 1:
+                bot.send_message(chatID, "Here is a number plates!")
+            else:
+                bot.send_message(chatID, "Sorry, but here is no number plate")
+            if len(indexes) > 0:
+                for i in indexes:
+                    bot.send_photo(chatID, photo=open(str(i) + '.jpg', 'rb'))
+                    read_num = Tess.Reading(i)
+                    read_num = ParseNumplate.TessNumplateParser(read_num)
+                    if len(read_num) == 0:
+                        bot.send_message(chatID, "Sorry, I could not read this number :`(")
+                    else:
+                        bot.send_message(chatID, "Text on numplate: " + read_num)
+
+
+def DoEverything(message):
+    fileID = message.photo[-1].file_id
+    chatID = message.chat.id
+    bot.send_message(chatID, 'Got a photo!')
+    file_info = bot.get_file(fileID)
+    downloaded_file = bot.download_file(file_info.file_path)
+    with open("image.jpg", 'wb') as new_file:
+        new_file.write(downloaded_file)
+    prediction = Prediction.predicting("image.jpg")
+    print("Prediction: ", prediction)
+    flag = 1
+    if prediction:
+        flag = ItPredictedNumplate(chatID)
+    if prediction != flag:
+        DoingYOLOThings(chatID)
+
+
 @bot.message_handler(commands=['start', 'about'])
 def send_welcome(message):
     chatID = message.chat.id
@@ -46,54 +103,14 @@ def check_numplate(message):
 @bot.message_handler(content_types=["photo"])
 def photo(message):
     if message.caption == "/check":
-        fileID = message.photo[-1].file_id
-        chatID = message.chat.id
-        bot.send_message(chatID, 'Got a photo!')
-        file_info = bot.get_file(fileID)
-        downloaded_file = bot.download_file(file_info.file_path)
-        with open("image.jpg", 'wb') as new_file:
-            new_file.write(downloaded_file)
-        prediction = Prediction.predicting("image.jpg")
-        print("Prediction: ", prediction)
-        flag = 1
-        if prediction:
-            read_number = Tess.Reading("image")
-            read_number = ParseNumplate.TessNumplateParser(read_number)
-            flag = Tess.IsNumbersHere(read_number)  # Check how good Tesseract read a numplate
-            print("Flag ", flag)
-            if len(read_number) == 0:
-                bot.send_message(chatID, "Sorry, I could not read this number :`(")
-            elif flag:
-                bot.send_message(chatID, "Text on numplate: " + read_number)
-        if prediction != flag:
-            result = Yolo.detection()
-            if result == -1:
-                bot.send_message(chatID, "Sorry, but image size is low")
-            elif result == -2:
-                bot.send_message(chatID, "Sorry, but here is no number plate")
-            else:
-                if result >= 2:
-                    indexes = Prediction.checkcropedimages(result)
-                    print("Numplates count: " ,len(indexes))
-                    if len(indexes) == 1:
-                        bot.send_message(chatID, "Here is a number plate!")
-                    elif len(indexes) > 1:
-                        bot.send_message(chatID, "Here is a number plates!")
-                    else:
-                        bot.send_message(chatID, "Sorry, but here is no number plate")
-                    if len(indexes) > 0:
-                        for i in indexes:
-                            bot.send_photo(chatID, photo=open(str(i) + '.jpg', 'rb'))
-                            read_num = Tess.Reading(i)
-                            read_num = ParseNumplate.TessNumplateParser(read_num)
-                            if len(read_num) == 0:
-                                bot.send_message(chatID, "Sorry, I could not read this number :`(")
-                            else:
-                                bot.send_message(chatID, "Text on numplate: " + read_num)
+        DoEverything(message)
 
-#while True:  # Uncomment later
-#    try:
-#        print('...')
-#        bot.polling()
-#    except:
-#        time.sleep(10)
+
+""""
+while True:
+    try:
+        print('...')
+        bot.polling()
+    except:
+        time.sleep(10)
+"""
