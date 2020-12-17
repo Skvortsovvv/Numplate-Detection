@@ -26,6 +26,7 @@ install:
 
 build_script:
   - "%PYTHON%/python.exe extract_tesseract.py"
+  #- "%PYTHON%/python.exe extract_yolo_weights.py"
   - "%PYTHON%/python.exe Source/build_file.py"
   - "%PYTHON%/python.exe -m unittest tests/test_parser.py"
   - "%PYTHON%/python.exe -m unittest tests/test_tesseract.py"
