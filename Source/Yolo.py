@@ -2,12 +2,12 @@ import cv2
 import numpy as np
 import glob
 
-def detection():
+def detection(path):
     net = cv2.dnn.readNet("yolov3_training_last.weights", "yolov3_testing.cfg")
     # Name custom object
     classes = ["numplate"]
     # Images path
-    images_path = glob.glob(r"image.jpg")
+    images_path = glob.glob(r""+str(path)+".jpg")
     layer_names = net.getLayerNames()
     output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
     # Insert here the path of your images
