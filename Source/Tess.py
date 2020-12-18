@@ -23,9 +23,9 @@ def Pars(num):
         for index in range(len(num) - ind - 8, len(num) - ind +1):
             temp += num[index]
     else:
-        print(num)
+        #print(num)
         return num
-    print('3 ', temp)
+    #print('3 ', temp)
     return temp
 
 def FinalParsin(numplate):
@@ -35,7 +35,7 @@ def FinalParsin(numplate):
             temp += ch.upper()
         elif ch.isdigit():
             temp += ch.upper()
-    print('2', temp)
+    #print('2', temp)
     return Pars(temp)
 
 def parser(strings):
@@ -55,7 +55,7 @@ def parser(strings):
                 max_d = counter_d
                 max_ch = counter_ch
                 m_word = el
-    print("1 ", m_word)
+    #print("1 ", m_word)
     return FinalParsin(m_word)
 
 def Reading(ind):
