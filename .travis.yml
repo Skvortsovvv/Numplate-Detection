@@ -2,14 +2,19 @@ language: python
 python:
  - "3.8"
 script:
- - pip install pip install opencv-python
- - pip install numpy
- - pip install tensorflow
- - pip install pyTelegramBotAPI
- - pip install imutils
+ - python -m pip install --upgrade pip
+ - pip install requests
+ - pip install pytest-warnings
  - pip install pytesseract
+ - pip install os-win
+ - pip install zipfile38
+ - pip install googledrivedownloader
  - pip install numpy
- #- python Source/build_file.py
+ - pip install opencv-python
+ - pip install imutils
+ - pip install pyTelegramBotAPI
+ - pip install tensorflow
+ - python Source/build_file.py
  #- python -m unittest tests.test_parser
  #- python Source/ParseNumplate.py
  #- python Source/Tess.py
