@@ -29,24 +29,18 @@ def DoingYOLOThings(chatID):
     elif result == -2:
         bot.send_message(chatID, "Sorry, but here is no number plate")
     else:
-        if result >= 2:
-            indexes = Prediction.checkcropedimages(result)
-            print("Numplates count: ", len(indexes))
-            if len(indexes) == 1:
-                bot.send_message(chatID, "Here is a number plate!")
-            elif len(indexes) > 1:
-                bot.send_message(chatID, "Here is a number plates!")
+        if result == 2:
+            bot.send_message(chatID, "Here is a number plate!")
+        elif result > 2:
+            bot.send_message(chatID, "Here is a number plates!")
+        for i in range(1,result):
+            bot.send_photo(chatID, photo=open(str(i) + '.jpg', 'rb'))
+            read_num = Tess.Reading(i)
+            read_num = ParseNumplate.TessNumplateParser(read_num)
+            if len(read_num) == 0:
+                bot.send_message(chatID, "Sorry, I could not read this number :`(")
             else:
-                bot.send_message(chatID, "Sorry, but here is no number plate")
-            if len(indexes) > 0:
-                for i in indexes:
-                    bot.send_photo(chatID, photo=open(str(i) + '.jpg', 'rb'))
-                    read_num = Tess.Reading(i)
-                    read_num = ParseNumplate.TessNumplateParser(read_num)
-                    if len(read_num) == 0:
-                        bot.send_message(chatID, "Sorry, I could not read this number :`(")
-                    else:
-                        bot.send_message(chatID, "Text on numplate: " + read_num)
+                bot.send_message(chatID, "Text on numplate: " + read_num)
 
 
 def DoEverything(message):
