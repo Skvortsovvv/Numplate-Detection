@@ -14,7 +14,7 @@ def prepare(filepath):
 def predicting(filepath):
     prediction = model.predict([prepare(filepath)])
     return int(prediction[0][0])
-
+""""
 def checkcropedimages(result):
     indexes = []
     for index in range(1, result):
@@ -29,3 +29,4 @@ def checkcropedimages(result):
         if len(chance) > 0:
             indexes.append(index)
     return indexes
+"""
